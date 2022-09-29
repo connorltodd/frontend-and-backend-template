@@ -55,7 +55,7 @@ passport.use(
             return callback(null, false, { message: "Incorrect email." });
 
           // If there is a user with that email but password is incorrect
-          if (!bcrypt.comparesponseync(password, foundUser[0].password))
+          if (!bcrypt.compareSync(password, foundUser[0].password))
             return callback(null, false, {
               message: "Incorrect password.",
             });
