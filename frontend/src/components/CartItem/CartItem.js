@@ -6,7 +6,7 @@ export default function CartItem (props) {
             <img className='cart-item-image' src={props.cartProductInfo.image} alt={props.cartProductInfo.title} />
             <h1 className='cart-item-title'>{props.cartProductInfo.title}</h1>
             <p>{props.cartProductInfo.price} €</p>
-            <p>{props.cartProductInfo.count}</p>
+            <p>{props.cartProductInfo.quantity}</p>
             <button 
                 className='cart-item-button' 
                 onClick={() => props.deleteProduct(props.cartProductInfo)}

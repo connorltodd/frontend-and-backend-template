@@ -17,9 +17,9 @@ export default function ProductDetail (props) {
 
     const fetchProduct = () => {
 
-        axios.get(`${BASE_URL}/${id}`)
+        axios.get(`${BASE_URL}/products/${id}`)
         .then((response) => {
-            setSelectedProduct(response.data)
+            setSelectedProduct(response.data[0])
         })
     }
 

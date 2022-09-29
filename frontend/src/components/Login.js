@@ -2,13 +2,13 @@
 import React from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import './Login.css'
 
 function Login() {
   const [state, setState] = React.useState({});
   const { setUser, setAuth } = React.useContext(AuthContext);
-  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ function Login() {
       setUser(response.data.foundUser);
       setAuth(true);
       Cookies.set("authToken", response.data.token);
-      navigate("/profile");
+      window.location.href = "/products";
     });
   };
 
@@ -26,22 +26,29 @@ function Login() {
   };
 
   return (
-    <div>
-      <p>Login</p>
-      <form onSubmit={handleSubmit}>
+    <div className='login-form-container'>
+      <h1 className='login-form-title'>Login</h1>
+      <form className='login-form' onSubmit={handleSubmit}>
         <p>Email</p>
-        <input name="email" value={state.email} onChange={handleChange} />
+        <input  
+          className='login-form-input' 
+          name="email" 
+          value={state.email} 
+          onChange={handleChange} 
+        />
         <br />
         <p>Password</p>
         <input
+          className='login-form-input' 
           name="password"
           type="password"
           value={state.password}
           onChange={handleChange}
         />
         <br />
-        <button type="submit">Login</button>
+        <button className='login-form-submit-button' type="submit">Login</button>
       </form>
+      <Link to="/signup">Signup</Link>
     </div>
   );
 }

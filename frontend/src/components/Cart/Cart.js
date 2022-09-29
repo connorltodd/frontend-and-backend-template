@@ -1,10 +1,14 @@
 import React from "react";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { BASE_URL } from "../../helpers/api";
 
 import CartItem from "../CartItem/CartItem";
 import './Cart.css';
 
 function Cart (props) {
+    const { user } = React.useContext(AuthContext);
     const [isCheckoutPopupDisplayed, setCheckoutPopupDisplay] = React.useState(false);
     let navigate = useNavigate();
 
@@ -12,7 +16,7 @@ function Cart (props) {
         let totalProductCost = 0;
 
         for( let i = 0; i < props.cartProducts.length; i++) {
-            totalProductCost += props.cartProducts[i].price * props.cartProducts[i].count
+            totalProductCost += props.cartProducts[i].price * props.cartProducts[i].quantity
         }
 
         return totalProductCost.toFixed(2);
@@ -23,12 +27,19 @@ function Cart (props) {
     }
 
     const confirmPurchase = () => {
+        // TODO: Handle order creation on API level
         // hide popup
         handleCheckoutPopup()
-        // remove all products from cart
-        props.removeAllProductsFromCart()
-        // redirect the user back to the homepage
-        navigate('/products')
+        axios.post(`${BASE_URL}/orders`, {
+            "user_id": user.user_id,
+            "product_ids": props.cartProducts.map(cartProduct => cartProduct.product_id)
+        })
+        .then(response => {
+            // remove all products from cart
+            props.removeAllProductsFromCart()
+            // redirect the user back to the homepage
+            navigate('/products')
+        })
     }
 
     return (
@@ -51,7 +62,7 @@ function Cart (props) {
                 <p>Price</p>
                 <p>Quantity</p>
                 <p>Remove</p>
-                {JSON.parse(window.localStorage.getItem('cartProducts')).map(
+                {props.cartProducts.map(
                     (productItem) => 
                     <CartItem cartProductInfo={productItem} deleteProduct={props.deleteProduct} />
                 )}

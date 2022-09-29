@@ -44,7 +44,7 @@ passport.use(
     },
     (email, password, callback) => {
       connection.query(
-        `SELECT * FROM User WHERE email = ?`,
+        `SELECT *, Cart.id as Cart_id FROM User JOIN Cart on Cart.user_id = User.id WHERE email = ?`,
         email,
         (err, foundUser) => {
           // If generic error return the callback with the error message
@@ -135,7 +135,7 @@ const authenticateWithJsonWebToken = (request, response, next) => {
 router.get('/verify-token', authenticateWithJsonWebToken, (request, response) => {
   const user_id = request.user_id;
   connection.query(
-    'SELECT * FROM User WHERE User.id = ?',
+    'SELECT *, Cart.id as Cart_id FROM User JOIN Cart on Cart.user_id = User.id WHERE User.id = ?',
     [user_id],
     (err, results) => {
       if (err) response.status(500).send(err);

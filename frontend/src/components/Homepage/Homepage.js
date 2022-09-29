@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Product from "../Product/Product";
 import './Homepage.css';
+import { BASE_URL } from '../../helpers/api';
 
 function Homepage (props) {
     // Experiment with state in react
@@ -36,7 +37,7 @@ function Homepage (props) {
     const fetchProducts = () => {
         // experiment with calling the api
         // combine the api and state
-        axios.get('https://fakestoreapi.com/products')
+        axios.get(`${BASE_URL}/products`)
         .then((response) => {
             setProducts(response.data)
         })

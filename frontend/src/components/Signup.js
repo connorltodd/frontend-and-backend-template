@@ -1,7 +1,8 @@
 // components/signup.js
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import './Signup.css';
 
 function Signup() {
   const [state, setState] = React.useState({});
@@ -24,28 +25,30 @@ function Signup() {
   };
 
   return (
-    <div>
-      <p>Signup</p>
-      <form onSubmit={handleSubmit}>
+    <div className='signup-form-container'>
+      <h1 className='signup-form-title'>Signup</h1>
+      <form className='signup-form' onSubmit={handleSubmit}>
         <p>Name</p>
-        <input name="name" value={state.name} onChange={handleChange} />
+        <input className='signup-form-input' name="name" value={state.name} onChange={handleChange} />
         <br />
         <p>Last Name</p>
-        <input name="lastname" value={state.lastname} onChange={handleChange} />
+        <input className='signup-form-input' name="lastname" value={state.lastname} onChange={handleChange} />
         <br />
         <p>Email</p>
-        <input name="email" value={state.email} onChange={handleChange} />
+        <input className='signup-form-input' name="email" value={state.email} onChange={handleChange} />
         <br />
         <p>Password</p>
         <input
+          className='signup-form-input'
           name="password"
           type="password"
           value={state.password}
           onChange={handleChange}
         />
         <br />
-        <button type="submit">Signup</button>
+        <button className='signup-form-submit-button' type="submit">Signup</button>
       </form>
+      <Link to="/login">Login</Link>
     </div>
   );
 }

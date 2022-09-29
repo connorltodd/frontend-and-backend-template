@@ -28,12 +28,7 @@ export default function Contact () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        if(contactInfo.firstName.length <= 6 || contactInfo.password.length <= 6) {
-            setFormResponseMessage('You are missing the password or email requirements')
-        } else {
-            setFormResponseMessage('Form submitted successfully')
-        }
+        setFormResponseMessage('Form submitted successfully')
     }
 
     return (

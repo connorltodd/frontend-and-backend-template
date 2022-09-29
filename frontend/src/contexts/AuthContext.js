@@ -10,6 +10,7 @@ export default function AuthContextProvider(props) {
   const [auth, setAuth] = React.useState(true);
   const [user, setUser] = React.useState({});
 
+
   React.useEffect(() => {
     axios
       .get("/auth/verify-token", config)
@@ -23,8 +24,14 @@ export default function AuthContextProvider(props) {
       });
   }, []);
 
+  const logout = () => {
+    setAuth(false);
+    Cookies.remove("authToken");
+    window.location.href = '/login'
+  }
+
   return (
-    <AuthContext.Provider value={{ auth, setAuth, user, setUser }}>
+    <AuthContext.Provider value={{ auth, setAuth, user, setUser,logout }}>
       {props.children}
     </AuthContext.Provider>
   );

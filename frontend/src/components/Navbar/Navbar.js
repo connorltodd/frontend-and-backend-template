@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../../contexts/AuthContext";
 import productSearch from '../Assets/search-button.png';
 import './Navbar.css';
 
 export default function Navbar (props) {
-
+    const { logout } = React.useContext(AuthContext);
 
     return (
         <div className='navbar'>
             <div>
-                <Link to='/' >
+                <Link to='/products' >
                     <button className='navbar-title'>Fake Store</button>
                 </Link>
                 <ul className='navbar-links-container'>
@@ -33,6 +34,7 @@ export default function Navbar (props) {
                     <Link to='/contact' >
                         <button className='navbar-link-buttons'>Contact us</button>
                     </Link>
+                    <button onClick={logout} className='navbar-link-buttons'>Logout</button>
                 </div>
             </div>
         </div>
