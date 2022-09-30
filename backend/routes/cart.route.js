@@ -70,7 +70,6 @@ router.put('/:cart_id/products/:cart_product_id', (request, response) => {
 router.delete('/:cart_id/products/:cart_product_id', (request, response) => {
     const { cart_product_id } = request.params;
     connection.query('DELETE from Cart_Product where id = ?', [cart_product_id], (error, results) => {
-        console.log(results)
         if (error) { 
             response.status(500).json(error);
         } else {

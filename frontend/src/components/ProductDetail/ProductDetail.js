@@ -10,7 +10,6 @@ export default function ProductDetail (props) {
 
     // component did mount
     React.useEffect(() => {
-        // console.log('product id', typeof id)
         fetchProduct()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

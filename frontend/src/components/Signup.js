@@ -47,8 +47,8 @@ function Signup() {
         />
         <br />
         <button className='signup-form-submit-button' type="submit">Signup</button>
+        <Link className="login-link" to="/login">Click here to login</Link>
       </form>
-      <Link to="/login">Login</Link>
     </div>
   );
 }

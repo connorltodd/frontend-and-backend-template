@@ -9,6 +9,7 @@ import './Login.css'
 function Login() {
   const [state, setState] = React.useState({});
   const { setUser, setAuth } = React.useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +17,7 @@ function Login() {
       setUser(response.data.foundUser);
       setAuth(true);
       Cookies.set("authToken", response.data.token);
-      window.location.href = "/products";
+      navigate("/products");
     });
   };
 
@@ -47,8 +48,8 @@ function Login() {
         />
         <br />
         <button className='login-form-submit-button' type="submit">Login</button>
+        <Link className="signup-link" to="/signup">Click here to signup</Link>
       </form>
-      <Link to="/signup">Signup</Link>
     </div>
   );
 }

@@ -52,13 +52,9 @@ function App() {
   }
 
   const addProductToCart = (productToAdd) => {
-    console.log('productto add', productToAdd)
     const productExistsInCart = cartProducts.find(product => product.product_id === productToAdd.id)
-    console.log(productExistsInCart)
     if (productExistsInCart) {
       modifyProductQuantity(productExistsInCart)
-
-      
     } else {
       axios.post(`${BASE_URL}/cart/${user.Cart_id}/products/${productToAdd.id}`)
         .then(response => {

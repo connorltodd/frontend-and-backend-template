@@ -45,13 +45,13 @@ function Cart (props) {
     return (
         <div>
             {/* {isCheckoutPopupDisplayed ? <div>Checkout is completed </div> : null} */}
-            {isCheckoutPopupDisplayed && (
+            {!isCheckoutPopupDisplayed && (
             <div className='popup'>
                 <div className='popup-card'>
                     <div className='popup-card-content'>
-                        <h1>Your order was finalised</h1>
-                        <p>Total amount was {calculateTotalProductPrice()}</p>
-                        <button onClick={confirmPurchase}>Confirm Purchase</button>
+                        <h1 className='popup-card-title'>Your order was finalised</h1>
+                        <p className='popup-card-subtitle'>Total amount was {calculateTotalProductPrice()}</p>
+                        <button className='popup-card-button' onClick={confirmPurchase}>Confirm Purchase</button>
                     </div>
                 </div>
             </div>

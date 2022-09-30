@@ -13,7 +13,6 @@ function Homepage (props) {
 
     // componentDidMount example (api calls or functions when the page loads)
     React.useEffect(() => {
-        console.log('we are fetching our products')
         fetchProducts()
     }, []);
 

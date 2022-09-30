@@ -7,9 +7,7 @@ const connection = require("../config");
 // POST /orders
 router.post('/', (request, response) => {
     const { user_id, product_ids } = request.body;
-    console.log(user_id)
     connection.query('INSERT INTO `Order` (user_id) VALUES (?)', [user_id], (error, results) => {
-        console.log(results)
         const newOrderId = results.insertId
         if (error) { 
             response.status(500).json(error);

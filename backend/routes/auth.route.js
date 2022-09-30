@@ -44,7 +44,7 @@ passport.use(
     },
     (email, password, callback) => {
       connection.query(
-        `SELECT *, Cart.id as Cart_id FROM User JOIN Cart on Cart.user_id = User.id WHERE email = ?`,
+        `SELECT *, Cart.id as Cart_id FROM User JOIN Cart on Cart.user_id = User.id WHERE User.email = ?`,
         email,
         (err, foundUser) => {
           // If generic error return the callback with the error message
