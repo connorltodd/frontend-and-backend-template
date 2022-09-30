@@ -1,6 +1,8 @@
-<!-- Backend Setup -->
+##  Backend Setup
+```sh
 cd backend
 npm i
+```
 
 Then complete the following steps:
 
@@ -15,13 +17,17 @@ To run the app use npm start
 
 You should see the following message in your terminal:
 
+```sh
 App is listening at 9000
 Successfully connected to the database
+```
 
 If not contact an instructor for assistance
 
 
-<!-- Frontend Setup -->
+## Frontend Setup
+```sh
 cd frontend
 npm i
 npm start
+```
