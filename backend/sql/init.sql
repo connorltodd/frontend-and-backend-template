@@ -62,7 +62,7 @@ ALTER TABLE `Cart_Product` ADD CONSTRAINT `Cart_Product_fk0` FOREIGN KEY (`produ
 
 ALTER TABLE `Cart_Product` ADD CONSTRAINT `Cart_Product_fk1` FOREIGN KEY (`cart_id`) REFERENCES `Cart`(`id`);
 
-SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS = 0;
 
 
 
